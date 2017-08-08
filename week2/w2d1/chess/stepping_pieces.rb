@@ -15,8 +15,8 @@ end
 class King < Piece
   include SteppingPiece
 
-  def initialize(position, board)
-    super('K', position, board)
+  def initialize(position, color, board)
+    super('K', position, color, board)
   end
 
   private
@@ -28,8 +28,8 @@ end
 class Knight < Piece
   include SteppingPiece
 
-  def initialize(position, board)
-    super('N', position, board)
+  def initialize(position, color, board)
+    super('N', position, color, board)
   end
 
   private

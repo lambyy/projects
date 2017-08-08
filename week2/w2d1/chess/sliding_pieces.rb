@@ -41,21 +41,32 @@ module SlidingPiece
     current_pos = @position
     pos = [current_pos[0] + dx, current_pos[1] + dy]
     deltas = []
-    while @board[pos].nil? && @board.in_bounds?(pos)
-      deltas << [dx, dy]
-      pos = [pos[0] + dx, pos[1] + dy]
+    while @board.in_bounds?(pos)
+      result = valid_move?(pos)
+      case result
+      when :empty
+        deltas << [dx, dy]
+        pos = [pos[0] + dx, pos[1] + dy]
+      when :take
+        deltas << [dx, dy]
+        break
+      when :skip
+        pos = [pos[0] + dx, pos[1] + dy]
+      end
     end
     deltas.each_with_index do |delta, idx|
       delta.map! {|dx| dx * (idx + 1) }
     end
   end
+
+
 end
 
 class Rook < Piece
   include SlidingPiece
 
-  def initialize(position, board)
-    super('R', position, board)
+  def initialize(position, color, board)
+    super('R', position, color, board)
   end
 
   private
@@ -67,8 +78,8 @@ end
 class Bishop < Piece
   include SlidingPiece
 
-  def initialize(position, board)
-    super('B', position, board)
+  def initialize(position, color, board)
+    super('B', position, color, board)
   end
 
   private
@@ -80,7 +91,7 @@ end
 class Queen < Piece
   include SlidingPiece
 
-  def initialize(position, board)
-    super('Q', position, board)
+  def initialize(position, color, board)
+    super('Q', position, color, board)
   end
 end

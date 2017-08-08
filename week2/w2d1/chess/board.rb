@@ -1,4 +1,7 @@
 require_relative 'pieces'
+require_relative 'sliding_pieces'
+require_relative 'stepping_pieces'
+
 class StartPosError < StandardError
   def message
     "There is no piece here to move!"
@@ -11,8 +14,16 @@ class EndPosError < StandardError
   end
 end
 
-
 class Board
+  CHAR_MAP = {
+    K: King,
+    Q: Queen,
+    R: Rook,
+    N: Knight,
+    B: Bishop,
+    P: Pawn
+  }
+
   attr_reader :grid
 
   def initialize
@@ -33,9 +44,22 @@ class Board
   end
 
   def set_board
-    [0, 1, 6, 7].each do |row|
+    row_setter = [:R, :N, :B, :Q, :K, :B, :N, :R]
+    nullpiece = NullPiece.instance
+    (0..7).each do |row|
       (0..7).each do |col|
-        @grid[row][col] = Piece.new("B", [3,3], @board)
+        if row == 0 || row == 7
+          color = :blue if row == 7
+          color = :red if row == 0
+          piece = CHAR_MAP[row_setter[col]].new([row, col], color, self)
+          @grid[row][col] = piece
+        elsif row == 1 || row == 6
+          color = :blue if row == 6
+          color = :red if row == 1
+          @grid[row][col] = Pawn.new([row, col], color, self)
+        else
+          @grid[row][col] = nullpiece
+        end
       end
     end
   end
