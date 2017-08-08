@@ -31,11 +31,11 @@ class Board
     row, col = pos
     row.between?(0,7) && col.between?(0,7)
   end
-  
+
   def set_board
     [0, 1, 6, 7].each do |row|
       (0..7).each do |col|
-        @grid[row][col] = Piece.new
+        @grid[row][col] = Piece.new("B", [3,3], @board)
       end
     end
   end
