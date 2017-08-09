@@ -2,15 +2,15 @@ require_relative 'pieces'
 
 module SlidingPiece
   # array of actual positions a Piece can move to from pos
-  def moves(pos)
-    moves = []
-    move_dirs.each do |delta|
-      x = pos[0] + delta[0]
-      y = pos[1] + delta[1]
-      moves << [x, y]
-    end
-    moves
-  end
+  # def moves(pos)
+  #   moves = []
+  #   move_dirs.each do |delta|
+  #     x = pos[0] + delta[0]
+  #     y = pos[1] + delta[1]
+  #     moves << [x, y]
+  #   end
+  #   moves
+  # end
 
   private
   #difference from pos
@@ -55,11 +55,9 @@ module SlidingPiece
       end
     end
     deltas.each_with_index do |delta, idx|
-      delta.map! {|dx| dx * (idx + 1) }
+      delta.map! { |d| d * (idx + 1) }
     end
   end
-
-
 end
 
 class Rook < Piece
