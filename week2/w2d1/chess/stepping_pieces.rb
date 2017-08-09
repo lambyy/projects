@@ -1,15 +1,15 @@
 require_relative 'pieces'
 
 module SteppingPiece
-  def moves(pos)
-    moves = []
-    move_dirs.each do |delta|
-      x = pos[0] + delta[0]
-      y = pos[1] + delta[1]
-      moves << [x, y] if @board.in_bounds?([x, y])
-    end
-    moves
-  end
+  # def moves(pos)
+  #   moves = []
+  #   move_dirs.each do |delta|
+  #     x = pos[0] + delta[0]
+  #     y = pos[1] + delta[1]
+  #     moves << [x, y]
+  #   end
+  #   moves
+  # end
 end
 
 class King < Piece
