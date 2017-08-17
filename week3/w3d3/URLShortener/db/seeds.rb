@@ -1,0 +1,56 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
+a = User.create(email: 'hi')
+b = User.create(email: 'cat')
+c = User.create(email: 'dog')
+
+s1 = ShortenedUrl.create_short_url(a, 'www.google.com')
+s2 = ShortenedUrl.create_short_url(b, 'www.yahoo.com')
+s3 = ShortenedUrl.create_short_url(c, 'www.bing.com')
+s4 = ShortenedUrl.create_short_url(b, 'www.weather.com')
+s5 = ShortenedUrl.create_short_url(c, 'www.youtube.com')
+s6 = ShortenedUrl.create_short_url(c, 'www.unicorns.com')
+s7 = ShortenedUrl.create_short_url(c, 'www.donkies.com')
+s8 = ShortenedUrl.create_short_url(c, 'www.cats.com')
+s9 = ShortenedUrl.create_short_url(a, 'www.dogs.com')
+s10 = ShortenedUrl.create_short_url(b, 'www.you.com')
+
+Visit.record_visit!(a, s1)
+Visit.record_visit!(b, s2)
+Visit.record_visit!(c, s3)
+Visit.record_visit!(c, s3)
+Visit.record_visit!(b, s1)
+Visit.record_visit!(c, s1)
+Visit.record_visit!(a, s10)
+Visit.record_visit!(a, s10)
+Visit.record_visit!(b, s10)
+Visit.record_visit!(a, s10)
+Visit.record_visit!(a, s10)
+Visit.record_visit!(a, s5)
+Visit.record_visit!(a, s5)
+Visit.record_visit!(a, s6)
+Visit.record_visit!(a, s7)
+Visit.record_visit!(a, s8)
+
+t1 = TagTopic.create(topic: 'news')
+t2 = TagTopic.create(topic: 'sports')
+t3 = TagTopic.create(topic: 'music')
+t4 = TagTopic.create(topic: 'cats')
+
+Tagging.create(tag_topic_id: t1.id, short_url_id: s1.id)
+Tagging.create(tag_topic_id: t1.id, short_url_id: s2.id)
+Tagging.create(tag_topic_id: t1.id, short_url_id: s10.id)
+Tagging.create(tag_topic_id: t1.id, short_url_id: s3.id)
+Tagging.create(tag_topic_id: t1.id, short_url_id: s5.id)
+Tagging.create(tag_topic_id: t1.id, short_url_id: s6.id)
+Tagging.create(tag_topic_id: t1.id, short_url_id: s7.id)
+Tagging.create(tag_topic_id: t1.id, short_url_id: s8.id)
+Tagging.create(tag_topic_id: t2.id, short_url_id: s3.id)
+Tagging.create(tag_topic_id: t3.id, short_url_id: s1.id)
+Tagging.create(tag_topic_id: t4.id, short_url_id: s4.id)
