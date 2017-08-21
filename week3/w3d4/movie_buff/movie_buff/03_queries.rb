@@ -37,7 +37,12 @@ end
 
 def actor_out_of_work
   # Find the number of actors in the database who have not appeared in a movie
+  Actor
+    .joins("LEFT JOIN castings ON castings.actor_id = actors.id")
+    .where(castings: {movie_id: nil})
+    .count
 
+    #.where("castings.actor_id IS NULL")
 end
 
 def starring(whazzername)
