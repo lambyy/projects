@@ -14,3 +14,21 @@
     <th><%= @cat.description %></th>
   </tr>
 </table>
+<br>
+
+<h3>Cat Rental Requests</h3>
+<table border="1" cellpadding="5%">
+  <tr>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+
+  <% @cat.cat_rental_requests.order('start_date').each do |cat_rental_request| %>
+    <tr>
+      <th><%= cat_rental_request.start_date %></th>
+      <th><%= cat_rental_request.end_date %></th>
+    </tr>
+  <% end %>
+
+
+</table>

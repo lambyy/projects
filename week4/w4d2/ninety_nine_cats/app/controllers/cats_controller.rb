@@ -38,6 +38,15 @@ class CatsController < ApplicationController
     end
   end
 
+  def destroy
+    @cat = Cat.find_by(id: params[:id])
+    if @cat.destroy
+      redirect_to cats_url
+    else
+      render plain: "You can't destroy what's not there!"
+    end
+  end
+
   private
   def cat_params
     params.require(:cat).permit(:name, :birth_date, :color, :sex, :description)
