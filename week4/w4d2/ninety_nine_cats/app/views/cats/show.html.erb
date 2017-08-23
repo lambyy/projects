@@ -1,0 +1,44 @@
+<h1><%= @cat.name %></h1>
+
+<table border="1" cellpadding="5%">
+  <tr>
+    <th>Birth Date</th>
+    <th>Color</th>
+    <th>Sex</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <th><%= @cat.birth_date %></th>
+    <th><%= @cat.color %></th>
+    <th><%= @cat.sex %></th>
+    <th><%= @cat.description %></th>
+  </tr>
+</table>
+<br>
+
+<h3>Cat Rental Requests</h3>
+<table border="1" cellpadding="5%">
+  <tr>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Approve</th>
+    <th>Deny</th>
+  </tr>
+
+  <% @cat.cat_rental_requests.order('start_date').each do |cat_rental_request| %>
+    <tr>
+      <th><%= cat_rental_request.start_date %></th>
+      <th><%= cat_rental_request.end_date %></th>
+      <th>
+        <!-- <% if cat_rental_request.pending? %>
+        <%= button_to "Approve Request", new_cat_rental_request_url(cat_rental_request) %>
+        <% else %>
+          <%= cat_rental_request.status %>
+        <% end %> -->
+      </th>
+      <th></th>
+    </tr>
+  <% end %>
+
+
+</table>
