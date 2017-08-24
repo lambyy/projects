@@ -1,0 +1,24 @@
+main h1 {
+  font-family: $serif;
+  font-size: 24px;
+  font-weight: bolder;
+  color: black;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+main div {
+  font-weight: bold;
+  color: $gray;
+}
+
+main a {
+  // font-family: $sans-serif;
+  color: $blue;
+  text-decoration: underline;
+}
+
+main li{
+  // list-style-type: circle;
+	padding: 5px;
+}
