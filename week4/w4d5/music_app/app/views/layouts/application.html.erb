@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1 class="site-header">MUSIC APP</h1>
+      <nav class="nav-header">
+        <section>
+          <%= button_to "Home", bands_url, method: :get %>
+        </section>
+        <section class="nav-login">
+          <% if logged_in? %>
+            <section>
+              Logged in as: <%= current_user.email %>
+              <%= button_to "Sign Out", session_url, method: :delete %>
+            </section>
+          <% else %>
+            <%= link_to "Sign in", new_session_url %> or
+            <%= link_to "Sign up", new_user_url %>
+          <% end %>
+        </section>
+      </nav>
+
+    </header>
+
+    <%= render 'shared/errors' %>
+
+    <%= yield %>
+  </body>
+</html>
