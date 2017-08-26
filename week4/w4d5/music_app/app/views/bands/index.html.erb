@@ -1,0 +1,9 @@
+<section class="band">
+  <h1>Bands!</h1>
+
+  <ul class="band-index">
+    <%= render @bands %>
+  </ul>
+
+  <%= button_to "New Band", new_band_url, method: :get %>
+</section>

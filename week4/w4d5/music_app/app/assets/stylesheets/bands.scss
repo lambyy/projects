@@ -1,0 +1,25 @@
+// Place all the styles related to the Bands controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.band-index {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+.band-index li {
+  margin: 20px;
+}
+
+.band {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.band-footer {
+  display: flex;
+  justify-content: center;
+}
