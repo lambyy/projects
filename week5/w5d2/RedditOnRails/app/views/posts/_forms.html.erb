@@ -1,0 +1,40 @@
+<form class="" action="<%= action %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method"
+         value="<%= action == posts_url ? :post : :patch%>">
+  <label>
+    Title
+    <input type="text" name="post[title]" value="<%= post.title %>">
+  </label>
+  <br>
+  <label>
+    URL
+    <input type="text" name="post[url]" value="<%= post.url %>">
+  </label>
+  <br>
+  <label>
+    Content
+    <textarea name="post[content]"><%= post.content %></textarea>
+  </label>
+  <br>
+  <label>
+    Subs
+    <input type="hidden"
+           name="post[sub_ids][]"
+           value="">
+    <% Sub.all.each do |sub| %>
+      <br>
+      <label>
+        <input type="checkbox"
+               name="post[sub_ids][]"
+               value="<%=sub.id%>"
+               <%= "checked" if post.subs.include?(sub) %> >
+        <%= sub.title %>
+      </label>
+    <% end %>
+  </label>
+  <input type="hidden" name="aktion" value="<%= action %>">
+  <br>
+  <input type="submit"
+        value="<%= action == posts_url ? "Create Post" : "Update Post"%>">
+</form>

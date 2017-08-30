@@ -1,0 +1,19 @@
+<%= link_to "All Subs", subs_url %>
+
+<h2><%= @post.title %></h2>
+<p><%= @post.url%></p>
+<p><%= @post.content%></p>
+
+<%= link_to "Edit Post", edit_post_url(@post) %>
+
+<h3>Associated Subs</h3>
+<% @post.subs.each do |sub| %>
+<li><%= link_to sub.title, sub_url(sub) %></li>
+<% end %>
+
+<h2>Comments</h2>
+<%= link_to "Comment on this post!", new_post_comment_url(@post) %>
+<% @post.comments.where(parent_comment_id: nil).each do |comment| %>
+<li><%= comment.content %></li>
+<% end %>
+<br>
