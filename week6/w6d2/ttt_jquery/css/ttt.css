@@ -1,0 +1,29 @@
+.ttt {
+  text-align: center;
+}
+
+.grid {
+  /*background-color: black;*/
+  height: 380px;
+  width: 380px;
+  margin: auto;
+}
+
+.cell {
+  background-color: grey;
+  float: left;
+  outline: 10px solid black;
+  height: 100px;
+  width: 100px;
+  list-style: none;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.white {
+  background-color: white;
+  font-size: 86px;
+  vertical-align: middle;
+}
