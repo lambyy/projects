@@ -1,9 +1,9 @@
-const path = require('path');
+var path = require('path');
 
 module.exports = {
-  entry: "./frontend/todo_redux.jsx",
+  entry: './frontend/todo_redux.jsx',
   output: {
-    filename: "bundle.js"
+    filename: './bundle.js',
   },
   module: {
     loaders: [
@@ -17,8 +17,8 @@ module.exports = {
       }
     ]
   },
+  devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx', "*"]
-  },
-  devtool: 'source-map'
+    extensions: ['.js', '.jsx', '*']
+  }
 };
