@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   receiveTodo: (todo) => dispatch(receiveTodo(todo)),
-  removeTodo: (todo) => dispatch(removeTodo(todo))
+  removeTodo: (id) => dispatch(removeTodo(id))
 });
 
 export default connect(

@@ -7,7 +7,10 @@ const TodoList = ({ todos, receiveTodo, removeTodo }) => (
     <ul>
       {
         todos.map( todo => (
-          <TodoListItem key={todo.id} todo={todo} removeTodo={removeTodo}/>
+          <TodoListItem key={todo.id}
+                        todo={todo}
+                        receiveTodo={receiveTodo}
+                        removeTodo={removeTodo}/>
         ))
       }
     </ul>

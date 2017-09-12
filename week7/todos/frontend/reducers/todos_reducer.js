@@ -10,7 +10,7 @@ const initialState = {
   2: {
     id: 2,
     title: 'wash dog',
-    body: 'with soap',
+    body: 'with shampoo',
     done: true
   }
 };
@@ -20,7 +20,9 @@ const todosReducer = (state = initialState, action) => {
   switch(action.type) {
     case RECEIVE_TODOS:
       let newState = {};
-      action.todos.forEach( (todo, idx) => newState[idx + 1] = todo );
+      action.todos.forEach( function (todo, idx) {
+        newState[idx + 1] = todo;
+      });
       return newState;
     case RECEIVE_TODO:
       newState = Object.assign({}, state);
@@ -28,7 +30,7 @@ const todosReducer = (state = initialState, action) => {
       return newState;
     case REMOVE_TODO:
       newState = Object.assign({}, state);
-      delete newState[action.todo.id];
+      delete newState[action.id];
       return newState;
     default:
       return state;
