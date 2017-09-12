@@ -20,7 +20,7 @@ class TodoListItem extends React.Component {
 
     const todo = Object.assign({}, this.props.todo);
     todo.done = !todo.done;
-    this.props.receiveTodo(todo);
+    // this.props.createTodo(todo);
   }
 
   updateButton() {
@@ -32,7 +32,7 @@ class TodoListItem extends React.Component {
 
   render() {
     const { todo } = this.props;
-    
+
     return (
       <div>
         <li>

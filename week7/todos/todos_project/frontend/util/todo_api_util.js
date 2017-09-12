@@ -8,3 +8,12 @@ export const fetchTodos = function fetchTodos() {
     url: '/api/todos'
   });
 };
+ export const createTodo = function createTodo(todo) {
+   return $.ajax({
+     method: 'POST',
+     url: '/api/todos',
+     data: JSON.stringify(todo),
+     dataType: 'json',
+     contentType: 'application/json'
+   });
+ };
