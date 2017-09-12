@@ -28,13 +28,13 @@ class TodoForm extends React.Component {
 
     const { title, body } = this.state;
     const { receiveTodo } = this.props;
-    const todo = Object.assign({}, this.state, { id: uniqueId() });
-    // const todo = {
-    //   id: uniqueId(),
-    //   title,
-    //   body,
-    //   done: false
-    // };
+    // const todo = Object.assign({}, this.state, { id: uniqueId(), done: false });
+    const todo = {
+      id: uniqueId(),
+      title,
+      body,
+      done: false
+    };
 
     receiveTodo(todo);
     this.setState({ title: "", body: ""});
