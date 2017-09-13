@@ -1,11 +1,12 @@
 import React from 'react';
+import merge from 'lodash/merge';
 
 class TodoListItem extends React.Component {
   constructor(props) {
     super(props);
 
     this.handleRemove = this.handleRemove.bind(this);
-    this.updateTodo = this.updateTodo.bind(this);
+    this.toggleTodo = this.toggleTodo.bind(this);
     this.updateButton = this.updateButton.bind(this);
   }
 
@@ -15,13 +16,12 @@ class TodoListItem extends React.Component {
     this.props.removeTodo(this.props.todo.id);
   }
 
-  updateTodo(event) {
+  toggleTodo(event) {
     event.preventDefault();
 
-    const todo = Object.assign({}, this.props.todo);
-    todo.done = !todo.done;
-    console.log("updating", todo);
-    console.log(this.props.updateTodo);
+    const todo = merge({}, this.props.todo, {
+      done: !this.props.todo.done
+    });
     this.props.updateTodo(todo);
   }
 
@@ -37,9 +37,9 @@ class TodoListItem extends React.Component {
 
     return (
       <div>
-        <li key={todo.id}>
+        <li>
           {todo.title + '   '}
-          <button onClick={this.updateTodo}>{this.updateButton()}</button>
+          <button onClick={this.toggleTodo}>{this.updateButton()}</button>
           <button onClick={this.handleRemove}>Remove</button>
         </li>
       </div>

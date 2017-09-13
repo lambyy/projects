@@ -48,7 +48,10 @@ export function updateTodo(todo) {
   return (dispatch) => {
     return APIUtil.updateTodo(todo)
       .then(
-        response => dispatch(receiveTodo(response)),
+        response => {
+          console.log(response);
+          dispatch(receiveTodo(response));
+        },
         err => dispatch(receiveErrors(err.responseJSON))
       );
   };
