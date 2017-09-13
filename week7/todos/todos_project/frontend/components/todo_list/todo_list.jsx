@@ -12,7 +12,14 @@ class TodoList extends React.Component {
   }
 
   render() {
-    const { todos, errors, createTodo, removeTodo, clearErrors } = this.props;
+    let { todos, errors } = this.props;
+    const { createTodo, updateTodo, removeTodo, clearErrors } = this.props;
+    todos = todos.sort(function(a, b) {
+      if (a.id < b.id) {
+        return -1;
+      }
+      return 1;
+    });
 
     return (
       <div>
@@ -21,7 +28,7 @@ class TodoList extends React.Component {
             todos.map( todo => (
               <TodoListItem key={todo.id}
                             todo={todo}
-                            createTodo={createTodo}
+                            updateTodo={updateTodo}
                             removeTodo={removeTodo}/>
             ))
           }

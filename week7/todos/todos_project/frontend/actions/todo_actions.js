@@ -44,7 +44,14 @@ export function createTodo(todo) {
   };
 }
 
+export function updateTodo(todo) {
+  return (dispatch) => {
+    return APIUtil.updateTodo(todo)
+      .then(
+        response => dispatch(receiveTodo(response)),
+        err => dispatch(receiveErrors(err.responseJSON))
+      );
+  };
+}
+
 window.APIUtil = APIUtil;
-window.fetchTodos = fetchTodos;
-window.createTodo = createTodo;
-window.receiveErrors = receiveErrors;

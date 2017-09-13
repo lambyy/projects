@@ -8,6 +8,7 @@ export const fetchTodos = function fetchTodos() {
     url: '/api/todos'
   });
 };
+
  export const createTodo = function createTodo(todo) {
    return $.ajax({
      method: 'POST',
@@ -17,3 +18,14 @@ export const fetchTodos = function fetchTodos() {
      contentType: 'application/json'
    });
  };
+
+export const updateTodo = function updateTodo(todo) {
+  return $.ajax({
+    method: "PATCH",
+    url: `/api/todos/${todo.id}`,
+    data: JSON.stringify(todo),
+    dataType: 'json',
+    contentType: 'application/json'
+  });
+};
+ window.updateTodo = updateTodo;
