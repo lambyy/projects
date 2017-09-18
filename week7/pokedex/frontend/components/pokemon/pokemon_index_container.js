@@ -2,8 +2,9 @@ import { connect } from 'react-redux';
 import { selectAllPokemon } from '../../reducers/selectors';
 import PokemonIndex from './pokemon_index';
 import {
-  receiveAllPokemon,
-  requestAllPokemon
+  // receiveAllPokemon,
+  requestAllPokemon,
+  requestAPokemon
 } from '../../actions/pokemon_actions';
 
 const mapStateToProps = state => ({
@@ -12,7 +13,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   requestAllPokemon: () => dispatch(requestAllPokemon()),
-  receiveAllPokemon: pokemon => dispatch(receiveAllPokemon(pokemon))
+  // requestAPokemon:   (id) => dispatch(requestAPokemon(id))
+  // receiveAllPokemon: pokemon => dispatch(receiveAllPokemon(pokemon))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonIndex);
